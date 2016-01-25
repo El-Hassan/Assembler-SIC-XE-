@@ -1,0 +1,28 @@
+
+PROGA    start   0
+         EXTDEF  BUFFER,BUFEND,LENGTH
+         EXTREF  RDREC
+FIRST    LDA     #0
+         LDT     #3
+         LDS     @LBL3
+         ADDR    T,A
+        +JSUB    RDREC
+         J       *
+............. Rest of Data ..............
+LENGTH   RESW    1
+BUFFER   RESB    4096
+BUFEND   EQU     *
+MAXLEN   EQU     BUFEND-BUFFER
+.
+............  RDREC CSECT  ..............
+.
+RDREC    CSECT
+         EXTDEF  RDREC
+         EXTREF  BUFFER,BUFEND,LENGTH
+         CLEAR   A
+         CLEAR   T
+         LDT     MAXLEN
+        +STT     LENGTH
+         J       *
+MAXLEN   WORD    BUFEND-BUFFER
+         END     FIRST

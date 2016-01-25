@@ -1,0 +1,120 @@
+>>  Source Program statements with value of LC indicated 
+
+      .23456789012345678901234567890123456                              
+000000 PROG     START   0                  
+000000 FIRST    LDA     #0                 
+000003          LDT     #3                 
+000006          LDS     @LBL3              
+000009          ADDR    T,A                
+00000B          LDX     #0                 
+00000E          J       LOOP               
+000011 BUF      RESW    10                 
+00002F LOOP     STA     BUF,X              
+000032          ADDR    T,X                
+000034          COMPR   X,S                
+000036          JLT     LOOP               
+000039          JSUB    FUN                
+00003C TEMP     EQU     FIRST              
+00003C TEN      EQU     10                 
+00003C SIXTY    WORD    6*TEN              
+00003F TWELVE   WORD    TEN+2              
+000042          J       *                  
+000045 FUN      LDB     30                 
+000048          +LDA    BUF                
+00004C          +LDT    30                 
+000050          RSUB    1000               
+ *** Warning: RUSB operand ignored.
+000053 TEMP1    BYTE    X'ABCDEF'          
+000056 TEMP2    BYTE    C'ABCDEF'          
+00005C LBL      WORD    7                  
+00005C          ORG     LBL                
+00005C LBL1BKUP RESW    1                  
+00005F LBL2     WORD    30                 
+000062 LBL3     WORD    60                 
+000065 BUF2     RESB    12                 
+000071          END     FIRST              
+
+PROGRAM LENGTH (in Hexa)  : 71
+
+>>    e n d    o f   p a s s   1
+
+>>   *****************************************************
+>>    s y m b o l     t a b l e   (values in decimal)
+
+        name         value     Absol/Reloc
+        ----------------------------------
+        buf             17    Relocatable
+        buf2           101    Relocatable
+        first            0    Relocatable
+        fun             69    Relocatable
+        lbl             92    Relocatable
+        lbl1bkup        92    Relocatable
+        lbl2            95    Relocatable
+        lbl3            98    Relocatable
+        loop            47    Relocatable
+        sixty           60    Relocatable
+        temp             0    Relocatable
+        temp1           83    Relocatable
+        temp2           86    Relocatable
+        ten             10    Relocatable
+        twelve          63    Relocatable
+
+>>   *****************************************************
+
+
+
+>>   S t a r t   o f    P a s s   I I 
+
+>>   A s s e m b l e d    p r o g r a m     l i s t i n g 
+
+ LC    Code         Source Statement
+
+000000      PROG     START   0                  
+                             reloc   n=0 i=1 x=0   b=0 p=0 e=0
+000000 010000 FIRST    LDA     #0                 
+                             reloc   n=0 i=1 x=0   b=0 p=0 e=0
+000003 750003          LDT     #3                 
+                             reloc   n=1 i=0 x=0   b=0 p=1 e=0
+000006 6E2059          LDS     @LBL3              
+000009 9050           ADDR    T,A                
+                             reloc   n=0 i=1 x=0   b=0 p=0 e=0
+00000B 050000          LDX     #0                 
+                             reloc   n=1 i=1 x=0   b=0 p=1 e=0
+00000E 3F201e          J       LOOP               
+000011      BUF      RESW    10                 
+                             reloc   n=1 i=1 x=1   b=0 p=1 e=0
+00002F 0FAfdf LOOP     STA     BUF,X              
+000032 9051           ADDR    T,X                
+000034 a014           COMPR   X,S                
+                             reloc   n=1 i=1 x=0   b=0 p=1 e=0
+000036 3B2ff6          JLT     LOOP               
+                             reloc   n=1 i=1 x=0   b=0 p=1 e=0
+000039 4B2009          JSUB    FUN                
+00003C      TEMP     EQU     FIRST              
+00003C      TEN      EQU     10                 
+00003C 6    SIXTY    WORD    6*TEN              
+00003F 0    TWELVE   WORD    TEN+2              
+                             reloc   n=1 i=1 x=0   b=0 p=1 e=0
+000042 3F2042          J       *                  
+                             reloc   n=1 i=1 x=0   b=0 p=0 e=0
+000045 6B001e FUN      LDB     30                 
+                             reloc   n=1 i=1 x=0   b=0 p=1 e=1
+000048 033000          +LDA    BUF                
+      011
+                             reloc   n=1 i=1 x=0   b=0 p=0 e=1
+00004C 77101e          +LDT    30                 
+                             reloc   n=1 i=1 x=0   b=0 p=0 e=0
+000050 4F03e8          RSUB    1000               
+000053 ABCDEF TEMP1    BYTE    X'ABCDEF'          
+000056 414243 TEMP2    BYTE    C'ABCDEF'          
+      444546
+00005C 7    LBL      WORD    7                  
+00005C               ORG     LBL                
+00005C      LBL1BKUP RESW    1                  
+00005F 1e   LBL2     WORD    30                 
+000062 3c   LBL3     WORD    60                 
+000065      BUF2     RESB    12                 
+>>    e n d    o f   p a s s   2
+
+>>   *****************************************************
+
